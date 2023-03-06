@@ -56,6 +56,7 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
+            ->setAttribute('estado','Activo')
         ;
         $builder->get('roles')
         ->addModelTransformer(new CallbackTransformer(

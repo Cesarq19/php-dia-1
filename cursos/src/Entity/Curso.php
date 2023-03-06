@@ -62,4 +62,5 @@ class Curso
 
         return $this;
     }
+
 }

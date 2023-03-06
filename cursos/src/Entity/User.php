@@ -36,6 +36,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $apellidos = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $estado = null;
+
     const ROLE_CON = "ROLE_CONSUMER";
     const ROLE_CRE = "ROLE_CREATOR";
     const ROLE_ADM = "ROLE_ADMIN";
@@ -74,7 +77,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
+        $roles[] = 'ROLE_CONSUMER';
 
         return array_unique($roles);
     }
@@ -130,6 +133,20 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setApellidos(string $apellidos): self
     {
         $this->apellidos = $apellidos;
+
+        return $this;
+    }
+
+    public function getEstado(): string
+    {
+        $estado = $this->estado;
+        $estado = 'Activo';
+        return $estado;
+    }
+
+    public function setEstado(string $estado): self
+    {
+        $this->estado = $estado;
 
         return $this;
     }
